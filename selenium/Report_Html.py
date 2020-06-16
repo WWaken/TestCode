@@ -1,5 +1,6 @@
 #Html报告的生成
 
+import os
 import sys
 import time
 import unittest
@@ -14,8 +15,10 @@ if __name__ == '__main__':
     print(sys.path)
     print(curpath)
     now = time.strftime("%Y%m%d-%H%M%S",time.localtime(time.time()))
+    if not os.path.exists(curpath+'/resultreport'):
+            os.makedirs(curpath+'/resultreport')
 
-    filename = curpath + '/resultreport'+now+'resultreport.html'
+    filename = curpath + '/resultreport/'+now+'resultreport.html'
     with open(filename,"wb") as fp:
         runner =HTMLTestRunner.HTMLTestRunner(stream=fp,verbosity=2,title='测试报告',description='执行用例测试情况')
         suite = createsuite()

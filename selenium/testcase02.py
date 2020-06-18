@@ -14,6 +14,7 @@ class test2(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+    @unittest.skip("skipping")
     def test_baidusearch(self):
         driver = self.driver
         driver.get(self.base_url + "/")
